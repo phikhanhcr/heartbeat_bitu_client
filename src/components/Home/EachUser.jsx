@@ -4,6 +4,7 @@ import { socket } from "../..";
 import useAuthentication from "../../customHooks/useAuthentication";
 import { INITIALIZE } from "../../redux/features/userSlice";
 import { isValidToken } from "../../utils/jwt";
+import { toast } from "react-toastify";
 
 function EachUser({ data }) {
   const dispatch = useDispatch();
@@ -14,8 +15,7 @@ function EachUser({ data }) {
 
   const handleLike = async (target_user_id, type) => {
     const accessToken = window.localStorage.getItem("accessToken");
-    if (accessToken && await isValidToken(accessToken)) {
-
+    if (accessToken && (await isValidToken(accessToken))) {
       const optionFetch = {
         method: "POST",
         headers: {
@@ -26,25 +26,33 @@ function EachUser({ data }) {
       };
 
       if (type === "like") {
-        const response = await fetch(
-          "http://localhost:3001/api/user/like",
-          optionFetch
-        );
-        const data = await response.json();
-        setCheckLike((pre) => !pre);
-        if (data.msg === "oke") {
-          socket.emit("handle-like", { target_user_id });
+        try {
+          const response = await fetch(
+            "http://localhost:3001/api/user/like",
+            optionFetch
+          );
+          const data = await response.json();
+          setCheckLike((pre) => !pre);
+          if (data.msg === "oke") {
+            socket.emit("handle-like", { target_user_id });
+          }
+        } catch (error) {
+          toast.error("Too much request, please slowly");
         }
       } else {
-        const response = await fetch(
-          "http://localhost:3001/api/user/unlike",
-          optionFetch
-        );
-        const data = await response.json();
-        setCheckLike((pre) => !pre);
-        if (data.msg === "oke") {
-          // socket io
-          socket.emit("handle-unlike", { target_user_id });
+        try {
+          const response = await fetch(
+            "http://localhost:3001/api/user/unlike",
+            optionFetch
+          );
+          const data = await response.json();
+          setCheckLike((pre) => !pre);
+          if (data.msg === "oke") {
+            // socket io
+            socket.emit("handle-unlike", { target_user_id });
+          }
+        } catch (error) {
+          toast.error("Too much request, please slowly");
         }
       }
     } else {

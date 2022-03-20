@@ -11,7 +11,6 @@ const initialState = {
   isInitialized: false,
   status: null,
   isLoading: false,
-  heartCount: 0,
 }
 
 // ASYNC-FUNCTIONS-----------------------------------------------------------------
@@ -138,7 +137,6 @@ export const AuthFunctions = () => {
     dispatch(userRegister(userInfo))
   };
 
-  
   const logout = () => {
     dispatch(LOGOUT());
   };
@@ -173,7 +171,7 @@ const userSlice = createSlice({
     },
     LOGOUT: (state, action) => {
       localStorage.removeItem("accessToken");
-      localStorage.removeItem("r");
+      localStorage.removeItem("refreshToken");
       state.user = null;
       state.isAuthenticated = false;
     }

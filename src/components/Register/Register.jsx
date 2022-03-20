@@ -46,7 +46,7 @@ function Register() {
                     </div>
                     <div className=" h-[38px] mb-[6px]">
                       <input
-                        type="text"
+                        type="password"
                         className="h-full w-full outline-none border border-solid border-[#ccc] text-xs p-2"
                         placeholder="Password"
                         value={password}
@@ -55,7 +55,7 @@ function Register() {
                     </div>
                     <div className=" h-[38px] mb-[6px]">
                       <input
-                        type="text"
+                        type="password"
                         className="h-full w-full outline-none border border-solid border-[#ccc] text-xs p-2"
                         placeholder="Repeat Password"
                         value={repeat_password}
