@@ -13,7 +13,7 @@ function Header() {
     <section className="h-header_height w-full bg-white border-b border-solid border-[#ccc] fixed top-0 left-0 right-0 z-[1] f;ex justify-between items-center">
       <div className="w-full h-full block p-0 max-w-[975px] my-0 mx-auto wide">
         <div className=" h-full flex justify-center md:justify-around items-center">
-          <div className="hidden md:block">
+          <div className="block">
             <Link to={`/`}>
               <img
                 alt="Instagram"

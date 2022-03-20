@@ -19,6 +19,7 @@ function Home() {
       <Header />
       <section className="pt-[200px] h-[100px]  w-[100%]  max-w-[975px] mx-auto my-0 p-0 ">
         <div className="flex flex-wrap justify-center -px-1 lg:-mx-3.5">
+        <h1 className="font-medium text-2xl mb-2">List user </h1>
           {userList.length ? (
             userList.map((ele, index) => <EachUser data={ele} key={index} />)
           ) : (
