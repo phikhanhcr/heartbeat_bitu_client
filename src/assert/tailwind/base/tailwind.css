@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --whit-color: #fff;
+  --primary-color: #0095f6;
+  --size-image-notification: 40px;
+  --header-height: 120px;
+}

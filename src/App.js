@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import useAuthentication from './customHooks/useAuthentication';
+import MainRouter from './routes/MainRoute';
 
 function App() {
+
+  const { initialize, isInitialized } = useAuthentication();
+
+  useEffect(() => {
+    initialize()
+  }, [initialize])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {
+        isInitialized &&
+        <>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            limit={2}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover={false}
+          />
+
+          <MainRouter />
+        </>
+      }
+    </>
   );
 }
 
