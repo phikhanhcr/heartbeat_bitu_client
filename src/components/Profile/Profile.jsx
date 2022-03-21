@@ -8,14 +8,12 @@ function Profile() {
   const [likeCount, checkLikeCount] = useState(() => user.like_count);
   useEffect(() => {
     socket.on('response-handle-like', data => {
-      console.log({ data });
       checkLikeCount(pre => pre + 1);
     })
   }, [])
 
   useEffect(() => {
     socket.on('response-handle-unlike', data => {
-      console.log({ data });
       checkLikeCount(pre => pre - 1);
     })
   }, [])
