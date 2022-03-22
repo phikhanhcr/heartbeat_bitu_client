@@ -34,7 +34,7 @@ function EachUser({ data }) {
           const data = await response.json();
           setCheckLike((pre) => !pre);
           if (data.msg === "oke") {
-            socket.emit("handle-like", { target_user_id });
+            // socket.emit("handle-like", { target_user_id });
           }
         } catch (error) {
           toast.error("Too much request, please slowly");
@@ -49,7 +49,7 @@ function EachUser({ data }) {
           setCheckLike((pre) => !pre);
           if (data.msg === "oke") {
             // socket io
-            socket.emit("handle-unlike", { target_user_id });
+            // socket.emit("handle-unlike", { target_user_id });
           }
         } catch (error) {
           toast.error("Too much request, please slowly");
